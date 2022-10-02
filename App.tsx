@@ -3,20 +3,23 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { HomeScreen } from "./src/screens/home";
 import { RootStackParamList } from "./src/routes";
+import { NativeBaseProvider } from "native-base";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App: FC = () => {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name={"Home"}
-          options={{ title: "ホーム" }}
-          component={HomeScreen}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name={"Home"}
+            options={{ title: "ホーム" }}
+            component={HomeScreen}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 };
 
