@@ -1,20 +1,9 @@
-import { FC } from "react";
-import { HomeScreen } from "../screens/Home";
+import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-export const SCREEN_NAMES = ["Home", "Settings"] as const;
-
-export type ScreenNames = typeof SCREEN_NAMES[number];
-
-export const SCREEN_NAME_CONFIGS: Record<
-  ScreenNames,
-  { component: FC; title: string }
-> = {
-  Home: {
-    title: "ホーム",
-    component: HomeScreen,
-  },
-  Settings: {
-    title: "設定",
-    component: HomeScreen,
-  },
+export type RootStackParamList = {
+  Home: undefined;
+  Settings: undefined;
 };
+
+export type ScreensProps<T extends keyof RootStackParamList> =
+  NativeStackScreenProps<RootStackParamList, T>;

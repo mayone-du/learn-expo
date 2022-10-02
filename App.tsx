@@ -1,24 +1,20 @@
 import type { FC } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { SCREEN_NAMES, SCREEN_NAME_CONFIGS } from "./src/routes";
+import { HomeScreen } from "./src/screens/home";
+import { RootStackParamList } from "./src/routes";
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const App: FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {SCREEN_NAMES.map((val) => {
-          return (
-            <Stack.Screen
-              key={val}
-              name={val}
-              options={{ title: SCREEN_NAME_CONFIGS[val].title }}
-              component={SCREEN_NAME_CONFIGS[val].component}
-            />
-          );
-        })}
+        <Stack.Screen
+          name={"Home"}
+          options={{ title: "ホーム" }}
+          component={HomeScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
