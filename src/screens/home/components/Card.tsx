@@ -9,7 +9,7 @@ import {
 } from "native-base";
 import { FC } from "react";
 import { GestureResponderHandlers, Animated, Pressable } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 import { ACTION_OFFSET } from "../../../constants";
 import { selectionAsync } from "expo-haptics";
 
@@ -83,22 +83,29 @@ export const Card: FC<Props> = ({ panHandlers, swipe, isFirst, data }) => {
               <Text fontWeight="bold" fontSize="xl" numberOfLines={1}>
                 {data.shopName}
               </Text>
+              <Text>居酒屋・バル</Text>
+              <Text color="green.600">営業時間中（10:00 ~ 23:00）</Text>
+              <Text color="red.400">混雑しています</Text>
               <HStack justifyContent="space-between">
-                <Text>徒歩 {Math.round(Math.random() * 100)} 分</Text>
+                <HStack display="flex" alignItems="center" space="2">
+                  <Text>
+                    <FontAwesome5 name="walking" size={16} color="gray" />
+                  </Text>
+                  <Text>
+                    徒歩
+                    {Math.round(Math.random() * 100)}分
+                  </Text>
+                </HStack>
                 <HStack space="1">
+                  <Text color="orange.400">
+                    <FontAwesome name="star" size={16} />
+                  </Text>
                   <Text
                     textAlign="center"
                     color="orange.400"
                     fontWeight={"bold"}
                   >
                     {data.star}
-                  </Text>
-                  <Text color="orange.400">
-                    <FontAwesome name="star" />
-                    <FontAwesome name="star" />
-                    <FontAwesome name="star" />
-                    <FontAwesome name="star" />
-                    <FontAwesome name="star" />
                   </Text>
                 </HStack>
               </HStack>

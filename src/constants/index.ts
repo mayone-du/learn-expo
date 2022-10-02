@@ -1,1 +1,1 @@
-export const ACTION_OFFSET = 120;
+export const ACTION_OFFSET = 100;
