@@ -8,6 +8,7 @@ import { dummyData } from "../../mock/data";
 import { Card } from "./components/Card";
 import { ACTION_OFFSET } from "../../constants";
 import { screenWidth } from "../../utils/screenSize";
+import * as Haptics from "expo-haptics";
 
 export const HomeScreen: FC<ScreensProps<"Home">> = ({ navigation }) => {
   const [dataList, setDataList] = useState(dummyData);
@@ -23,6 +24,7 @@ export const HomeScreen: FC<ScreensProps<"Home">> = ({ navigation }) => {
         const direction = Math.sign(dx);
         const isActionActive = Math.abs(dx) > ACTION_OFFSET;
         if (isActionActive) {
+          Haptics.selectionAsync();
           Animated.timing(swipe, {
             duration: 200,
             toValue: {
